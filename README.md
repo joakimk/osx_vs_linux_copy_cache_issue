@@ -1,4 +1,8 @@
-This is a reproduction of a caching issue in Docker on OSX vs Linux.
+This is a reproduction of an issue where docker cache is not used on Linux when the docker image is built on OSX. The same problem appears the other way around too.
+
+---
+
+For our use-case we want to run the docker build after pulling an image to ensure it's up to date. When the cache works this build takes seconds, otherwise it takes up to 10 minutes.
 
 ---
 
@@ -102,7 +106,7 @@ I have tried this the other way around as well (build on Linux, try to restore w
 
 ---
 
-# How to run this on your computer to see if you can reproduce it
+## How to run this on your computer to see if you can reproduce it
 
 ```
 cd /tmp
