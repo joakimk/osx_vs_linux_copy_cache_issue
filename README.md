@@ -2,7 +2,9 @@ This is a reproduction of a caching issue in Docker on OSX vs Linux.
 
 ---
 
-I built and pushed the image from my OSX:
+## Setup and expected behavior
+
+I built and pushed an image from OSX:
 
     $ uname -a
     Darwin 17.4.0 Darwin Kernel Version 17.4.0: Sun Dec 17 09:19:54 PST 2017; root:xnu-4570.41.2~1/RELEASE_X86_64 x86_64
@@ -12,7 +14,7 @@ I built and pushed the image from my OSX:
     docker build . -t auctionet/osx_vs_linux_copy_cache_issue
     docker push auctionet/osx_vs_linux_copy_cache_issue
 
-I cleared all local data in preferences with "Remove all data" and ran this:
+I then cleared all local data in preferences with "Remove all data" and ran this:
 
     docker pull auctionet/osx_vs_linux_copy_cache_issue
     docker build . -t auctionet/osx_vs_linux_copy_cache_issue --cache-from auctionet/osx_vs_linux_copy_cache_issue
@@ -38,11 +40,11 @@ Successfully built 39fd9c43a613
 Successfully tagged auctionet/osx_vs_linux_copy_cache_issue:latest
 ```
 
-All steps successfully used cache.
+All steps successfully used cache from the previously published image.
 
 ---
 
-And then on a Linux host:
+## Trying to do the same on a Linux host
 
 ```
 # uname -a
@@ -69,9 +71,11 @@ Successfully tagged auctionet/osx_vs_linux_copy_cache_issue:latest
 
 **Unexpected behavior**: Step 2/4 uses cache, but Step 3/4 does not.
 
+I have tried this the other way around as well (build on Linux, try to restore with cache on OSX) and seen the same behavior. It seems the image is built differently so the cache does not work when moving between the platforms.
+
 ---
 
-I tried it on a different OSX host:
+## Restoring it on another OSX host
 
 TODO
 
