@@ -10,13 +10,17 @@ For our use-case we want to run the docker build after pulling an image to ensur
 
 I built and pushed an image from OSX:
 
-    $ uname -a
-    Darwin 17.4.0 Darwin Kernel Version 17.4.0: Sun Dec 17 09:19:54 PST 2017; root:xnu-4570.41.2~1/RELEASE_X86_64 x86_64
-    $ docker -v
-    Docker version 18.03.0-ce, build 0520e24
+```
+$ uname -a
+Darwin 17.4.0 Darwin Kernel Version 17.4.0: Sun Dec 17 09:19:54 PST 2017; root:xnu-4570.41.2~1/RELEASE_X86_64 x86_64
+$ docker -v
+Docker version 18.03.0-ce, build 0520e24
+```
 
-    docker build . -t auctionet/osx_vs_linux_copy_cache_issue
-    docker push auctionet/osx_vs_linux_copy_cache_issue
+```
+docker build . -t auctionet/osx_vs_linux_copy_cache_issue
+docker push auctionet/osx_vs_linux_copy_cache_issue
+```
 
 I then cleared all local data in preferences with "Remove all data" and ran this:
 
