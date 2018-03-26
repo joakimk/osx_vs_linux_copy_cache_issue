@@ -44,6 +44,33 @@ All steps successfully used cache from the previously published image.
 
 ---
 
+## Restoring it on another OSX host
+
+```
+Sending build context to Docker daemon  74.75kB
+Step 1/4 : FROM alpine:latest
+latest: Pulling from library/alpine
+ff3a5c916c92: Already exists
+Digest: sha256:7b848083f93822dd21b0a2f14a110bd99f6efb4b838d499df6d04a49d0debf8b
+Status: Downloaded newer image for alpine:latest
+ ---> 3fd9065eaf02
+Step 2/4 : RUN sleep 3
+ ---> Using cache
+ ---> 2e9e440fcdcd
+Step 3/4 : COPY Dockerfile /tmp
+ ---> Using cache
+ ---> e012639834a8
+Step 4/4 : RUN sleep 3
+ ---> Using cache
+ ---> 39fd9c43a613
+Successfully built 39fd9c43a613
+Successfully tagged auctionet/osx_vs_linux_copy_cache_issue:latest
+```
+
+All steps successfully used cache from the previously published image here too.
+
+---
+
 ## Trying to do the same on a Linux host
 
 ```
@@ -75,8 +102,12 @@ I have tried this the other way around as well (build on Linux, try to restore w
 
 ---
 
-## Restoring it on another OSX host
+# How to run this on your computer to see if you can reproduce it
 
-TODO
-
-All steps successfully used cache?
+```
+cd /tmp
+git clone git@github.com:joakimk/osx_vs_linux_copy_cache_issue.git
+cd osx_vs_linux_copy_cache_issue
+docker pull auctionet/osx_vs_linux_copy_cache_issue
+docker build . -t auctionet/osx_vs_linux_copy_cache_issue --cache-from auctionet/osx_vs_linux_copy_cache_issue
+```
