@@ -110,7 +110,7 @@ I have tried this the other way around as well (build on Linux, try to restore w
 
 ---
 
-## How to run this on your computer to see if you can reproduce it
+## How to reproduce (on Linux)
 
 ```
 cd /tmp
