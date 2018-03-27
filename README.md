@@ -1,5 +1,7 @@
 This is a reproduction of an [issue](https://github.com/docker/for-mac/issues/2728) where docker cache for COPY is not used on Linux when the docker image is built on OSX. The same problem appears the other way around too.
 
+Except for COPY statements, the cache works just fine.
+
 ---
 
 For our use-case we want to run the docker build after pulling an image to ensure it's up to date. When the cache works this build takes seconds, otherwise it takes up to 10 minutes.
