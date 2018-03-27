@@ -110,9 +110,13 @@ Successfully tagged auctionet/osx_vs_linux_copy_cache_issue:latest
 
 I have tried this the other way around as well (build on Linux, try to restore with cache on OSX) and seen the same behavior. It seems the image is built differently so the cache does not work when moving between the platforms.
 
+Both run Linux under the hood, but something about how the build context is set up is probably different?
+
 ---
 
-## How to reproduce (on Linux)
+## How to reproduce
+
+On Linux (using an image built on OSX):
 
 ```
 cd /tmp
@@ -120,4 +124,14 @@ git clone git@github.com:joakimk/osx_vs_linux_copy_cache_issue.git
 cd osx_vs_linux_copy_cache_issue
 docker pull auctionet/osx_vs_linux_copy_cache_issue
 docker build . -t auctionet/osx_vs_linux_copy_cache_issue --cache-from auctionet/osx_vs_linux_copy_cache_issue
+```
+
+On OSX (using an image built on Linux):
+
+```
+cd /tmp
+git clone git@github.com:joakimk/osx_vs_linux_copy_cache_issue.git
+cd osx_vs_linux_copy_cache_issue
+docker pull auctionet/osx_vs_linux_copy_cache_issue_built_on_linux
+docker build . -t auctionet/osx_vs_linux_copy_cache_issue_built_on_linux --cache-from auctionet/osx_vs_linux_copy_cache_issue_built_on_linux
 ```
