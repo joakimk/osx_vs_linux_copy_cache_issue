@@ -4,7 +4,7 @@ Except for COPY statements, the cache works just fine.
 
 ---
 
-For our use-case we want to run the docker build after pulling an image to ensure it's up to date. When the cache works this build takes seconds, otherwise it takes up to 10 minutes.
+For our use-case we want to run the docker build after pulling an image to ensure it's up to date. When the COPY cache works this build takes seconds, otherwise it takes up to 10 minutes.
 
 ---
 
