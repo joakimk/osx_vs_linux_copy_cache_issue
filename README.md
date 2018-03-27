@@ -1,4 +1,4 @@
-This is a reproduction of an [issue](https://github.com/docker/for-mac/issues/2728) where docker cache is not used on Linux when the docker image is built on OSX. The same problem appears the other way around too.
+This is a reproduction of an [issue](https://github.com/docker/for-mac/issues/2728) where docker cache for COPY is not used on Linux when the docker image is built on OSX. The same problem appears the other way around too.
 
 ---
 
